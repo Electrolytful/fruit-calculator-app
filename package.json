@@ -1,14 +1,13 @@
 {
   "name": "fruit-salad-frontend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Frontend API app to fetch fruits input by user and show a calorie count",
   "main": "script.js",
   "scripts": {
-    "dev": "watchify ./script.js -o bundle.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "watchify ./script.js -o bundle.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Erhan Ulusal",
   "license": "ISC",
   "devDependencies": {
     "watchify": "^4.0.0"

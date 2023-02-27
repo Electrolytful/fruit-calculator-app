@@ -6,24 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fruit Salad</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <script defer src="./bundle.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+    </style>
 </head>
 <body>
+
+    <header id="headerSection">
+        <img src="./img/logo.png" alt="fruit logo" width="200px" height="200px">
+        <h1 id="heading">Fruit Calorie Calculator</h1>
+        <p id="description">Welcome to the fruit calorie calculator. To get started just type in a fruit into the searchbar and click submit! To remove a fruit just click on the fruit's name!</p>
+    </header>
+
     <section id="inputSection">
         <form>
-            <label for="fruitInput">Enter fruit name</label>
-            <input id="fruitInput" type="text">
+            <div class="inputGroup">
+                <label for="fruitInput">Enter fruit name</label>
+                <input id="fruitInput" type="text">
+            </div>
 
-            <input type="submit" value="submit">
+            <input type="submit" value="submit" class="button-55" role="button">
         </form>
     </section>
 
     <section id="fruitSection">
-        <ul></ul>
+        <ul id="fruitList"></ul>
     </section>
 
     <section id="nutritionSection">
-        <p></p>
+        <p id="calorieCountText">Total calorie count: </p>
+        <p id="calorieCount">0</p>
+    </section>
+
+    <section id="imageSection">
+       
     </section>
 
 </body>
