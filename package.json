@@ -1,7 +1,7 @@
 {
   "name": "fruit-salad-frontend",
   "version": "1.0.0",
-  "description": "Frontend API app to fetch fruits input by user and show a calorie count",
+  "description": "Frontend app to fetch fruits input by user and show a calorie count",
   "main": "script.js",
   "scripts": {
     "dev": "watchify ./script.js -o bundle.js"

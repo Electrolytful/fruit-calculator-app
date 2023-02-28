@@ -2,17 +2,19 @@ const { getEventListeners } = require("events");
 require('dotenv').config();
 
 // selecting DOM elements to add content to dynamically 
-const fruitForm = document.querySelector("#inputSection form");
-const fruitList = document.querySelector("#fruitSection ul");
+const fruitForm = document.querySelector("#searchSection form");
+const fruitFormPost = document.querySelector("#inputSectionPost form");
+const fruitList = document.querySelector("#fruitListSection ul");
 const fruitNutrition = document.querySelector("#calorieCount");
 const fruitImage = document.querySelector("#imageSection");
 
 // global variables
-const APIkey = process.env.APIkey;     //SHOULD BE KEPT SECRET
+const APIkey = "33986188-7c2c501da5f77845a5bf70b41";    //SHOULD BE KEPT SECRET - Bug - Does not work with .env file
 let calorie = 0;
 
 // event listener for the submit button calling the extract fruit function (see below)
 fruitForm.addEventListener("submit", extractFruit);
+fruitFormPost.addEventListener("submit", createNewFruit);
 
 // function checking to see whether a valid input is submitted then calling the fetch function below
 function extractFruit(e)  {
@@ -65,6 +67,27 @@ function addFruit(fruitData, imgData) {
         fruitNutrition.textContent = calorieCount(fruitData, "remove");
     }, {once: true});
 };
+
+// send form data of new fruit to server
+async function createNewFruit(e) {
+    e.preventDefault();
+
+    const data = {name: e.target.fruitInputCreate.value, nutritions: {calories: e.target.fruitInputCalorie.value}};
+    const options = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }
+
+    const response = await fetch("https://fruit-api-dv5n.onrender.com/fruits", options);
+
+    if(response.status === 201) {
+        e.target.reset();
+    }
+
+}
 
 // function to malipulate the calorie count when fruit is added and removed, takes two params: fruit = the fruit item(data from API), option: either += calories or -= calories
 function calorieCount(fruit, option) {
