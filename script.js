@@ -8,7 +8,7 @@ const fruitNutrition = document.querySelector("#calorieCount");
 const fruitImage = document.querySelector("#imageSection");
 
 // global variables
-const APIkey = APIkey;     //SHOULD BE KEPT SECRET
+const APIkey = process.env.APIkey;     //SHOULD BE KEPT SECRET
 let calorie = 0;
 
 // event listener for the submit button calling the extract fruit function (see below)
