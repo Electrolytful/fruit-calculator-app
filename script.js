@@ -1,4 +1,5 @@
 const { getEventListeners } = require("events");
+require('dotenv').config();
 
 // selecting DOM elements to add content to dynamically 
 const fruitForm = document.querySelector("#inputSection form");
@@ -7,7 +8,7 @@ const fruitNutrition = document.querySelector("#calorieCount");
 const fruitImage = document.querySelector("#imageSection");
 
 // global variables
-const APIkey = "33986188-7c2c501da5f77845a5bf70b41";     //SHOULD BE KEPT SECRET
+const APIkey = APIkey;     //SHOULD BE KEPT SECRET
 let calorie = 0;
 
 // event listener for the submit button calling the extract fruit function (see below)
@@ -27,7 +28,7 @@ function extractFruit(e)  {
 // asynchronous function to get the fruit data from API when user hits submit, the data is then passed into the addFruit function below
 async function fetchFruitData(fruit) {
     try {
-        const resp = await fetch(`https://fruity-api.onrender.com/fruits/${fruit}`);
+        const resp = await fetch(`https://fruit-api-dv5n.onrender.com/fruits/${fruit}`);
         const resp2 = await fetch(`https://pixabay.com/api/?key=${APIkey}&q=${fruit}+fruit`);
         if(resp.ok && resp2.ok) {
             const fruitData = await resp.json();

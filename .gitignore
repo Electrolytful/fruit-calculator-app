@@ -1,4 +1,4 @@
 # ignore node modules
 node_modules/
 bundle.js
-package-lock.json
+.env
