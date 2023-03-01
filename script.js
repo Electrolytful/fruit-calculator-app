@@ -4,15 +4,14 @@ require('dotenv').config();
 // selecting DOM elements to add content to dynamically 
 const fruitForm = document.querySelector("#searchSection form");
 const fruitFormPost = document.querySelector("#inputSectionPost form");
-const fruitList = document.querySelector("#fruitListSection ul");
+const fruitList = document.querySelector("#fruitListSection div");
 const fruitNutrition = document.querySelector("#calorieCount");
-const fruitImage = document.querySelector("#imageSection");
 
 // global variables
 const APIkey = "33986188-7c2c501da5f77845a5bf70b41";    //SHOULD BE KEPT SECRET - Bug - Does not work with .env file
 let calorie = 0;
 
-// event listener for the submit button calling the extract fruit function (see below)
+// event listeners for the submit buttons
 fruitForm.addEventListener("submit", extractFruit);
 fruitFormPost.addEventListener("submit", createNewFruit);
 
@@ -30,8 +29,8 @@ function extractFruit(e)  {
 // asynchronous function to get the fruit data from API when user hits submit, the data is then passed into the addFruit function below
 async function fetchFruitData(fruit) {
     try {
-        const resp = await fetch(`https://fruit-api-dv5n.onrender.com/fruits/${fruit}`);
-        const resp2 = await fetch(`https://pixabay.com/api/?key=${APIkey}&q=${fruit}+fruit`);
+        const resp = await fetch(`http://127.0.0.1:3000/fruits/${fruit}`);           //http://127.0.0.1:3000/fruits/ - https://fruit-api-dv5n.onrender.com/fruits/
+        const resp2 = await fetch(`https://pixabay.com/api/?key=${APIkey}&q=${fruit}+fruit`);      
         if(resp.ok && resp2.ok) {
             const fruitData = await resp.json();
             const imgData = await resp2.json();
@@ -46,26 +45,35 @@ async function fetchFruitData(fruit) {
 
 // function to get fruit and image data, creating a list and image element, as well as updating the total calorie count using the calorieCount function (add and remove)s
 function addFruit(fruitData, imgData) {
-    // create list item
-    const li = document.createElement('li');
+    // create elements to be included in each fruit div
+    const div = document.createElement('div');
+    const p = document.createElement('p');
     const img = document.createElement('img');
-    // assign text to list item and image data to the image src
-    li.textContent = fruitData.name;
+    const calorie = document.createElement('p');
+
+    // assign name and image to p and img elements created
+    p.textContent = `Name: ${fruitData.name}`;
     img.src = imgData.hits[Math.floor(Math.random() * imgData.hits.length)].largeImageURL;
     img.alt = fruitData;
     img.height = 250;
     img.width = 250;
-    // append list and image item to the DOM
-    fruitList.appendChild(li);
-    fruitImage.appendChild(img);
+    calorie.textContent = `Calories: ${fruitData.nutritions.calories}`;
+
+    // append name and img elements to the div element then append that div to the DOM
+    div.appendChild(img);
+    div.appendChild(p);
+    div.append(calorie);
+    fruitList.appendChild(div);
+
     // update calorie count depending on fruit added
     fruitNutrition.textContent = calorieCount(fruitData, "add");
-    // add event listener to remove fruit item and image connected to that fruit item when clicked
-    li.addEventListener("click", (e) => {
-        e.target.remove();
-        img.remove();
+
+    // add event listener to remove the fruit div if clicked
+    fruitList.addEventListener("click", (e) => {
+        const item = e.target.closest("div");
+        item.remove();
         fruitNutrition.textContent = calorieCount(fruitData, "remove");
-    }, {once: true});
+    });
 };
 
 // send form data of new fruit to server
