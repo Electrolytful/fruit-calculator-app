@@ -20,27 +20,33 @@
         <p id="description">Welcome to the fruit calorie calculator. To get started just type in a fruit into the searchbar and click submit! To remove a fruit just click on the fruit's name!</p>
     </header>
 
-    <section id="searchSection">
-        <form>
-            <div class="inputGroup">
-                <label for="fruitInput">Enter fruit name</label>
-                <input id="fruitInput" type="text">
-            </div>
-
-            <input type="submit" value="submit" class="button-55" role="button">
-        </form>
-    </section>
-
-    <section id="fruitListSection">
-        <div class="fruitItems">
-            
+    <div class="fruitListContainer">
+        <div class="fruitInfo">
+            <section id="searchSection">
+                <form>
+                    <div class="inputGroup">
+                        <label for="fruitInput">Enter fruit name</label>
+                        <input id="fruitInput" type="text">
+                    </div>
+        
+                    <input id="addFruitButton" type="submit" value="submit" class="button-55" role="button">
+                </form>
+            </section>
+    
+            <section id="nutritionSection">
+                <p id="calorieCountText">Total calorie count: </p>
+                <p id="calorieCount">0</p>
+            </section>
         </div>
-    </section>
+    
+        <section id="fruitListSection">
+            <div class="fruitItems">
+                
+            </div>
+        </section>
 
-    <section id="nutritionSection">
-        <p id="calorieCountText">Total calorie count: </p>
-        <p id="calorieCount">0</p>
-    </section>
+    </div>
+
 
     <section id="inputSectionPost">
         <p id="inputSectionPostHeader">Enter new fruit to add!</p>
@@ -55,7 +61,7 @@
                 <input id="fruitInputCalorie" type="text">
             </div>
 
-            <input type="submit" value="submit" class="button-55" role="button">
+            <input id="postFruitButton" type="submit" value="submit" class="button-55" role="button">
         </form>
     </section>
 

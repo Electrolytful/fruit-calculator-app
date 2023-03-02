@@ -69,7 +69,7 @@ function addFruit(fruitData, imgData) {
     fruitNutrition.textContent = calorieCount(fruitData, "add");
 
     // add event listener to remove the fruit div if clicked
-    fruitList.addEventListener("click", (e) => {
+    div.addEventListener("click", (e) => {
         const item = e.target.closest("div");
         item.remove();
         fruitNutrition.textContent = calorieCount(fruitData, "remove");

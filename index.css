@@ -7,12 +7,13 @@
 
 body {
     width: 100vw;
-    height: 100vh;
+    height: min-content;
     display: flex;
     flex-direction: column;
     gap: 100px;
     align-items: center;
     font-family: 'Raleway', sans-serif;
+    transition: all .4s;
 }
 
 header {
@@ -27,9 +28,101 @@ header p{
     top: 30px;
 }
 
-#inputSection form {
-    display: flex;
-    flex-direction: column;
+.inputGroup {
+  display: flex;
+  gap: 15px;
+}
+
+#searchSection {
+  height: 200px;
+  width: 400px;
+  background-color: transparent;
+  border: 2px solid grey;
+  border-radius: 30px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fruitInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+#nutritionSection {
+  width: 250px;
+  height: 200px;
+  border: 2px solid grey;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#addFruitButton {
+  position: relative;
+  left: 120px;
+  top: 25px;
+}
+
+.fruitListContainer {
+  display: flex;
+  gap: 400px;
+  justify-content: center;
+}
+
+#fruitListSection {
+  width: 820px;
+  height: 500px;
+  overflow-y: scroll;
+  border: 2px solid red;
+  display: flex;
+  flex-direction: row;
+}
+
+.fruitItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
+
+.fruitItems div{
+  background-color: #41403e;
+  width: min-content;
+  height: min-content;
+  padding: 20px;
+  text-align: center;
+  border-radius: 30px;
+}
+
+.fruitItems div > img{
+  width: 200px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+#inputSectionPost {
+  height: 700px;
+  width: 500px;
+  border: 2px solid grey;
+  padding: 30px;
+  text-align: center;
+}
+
+#inputSectionPost > form{
+  margin-top: 100px;
+}
+
+#postFruitButton {
+  margin-top: 100px;
 }
 
 /* button css */
